@@ -5,9 +5,10 @@ class GemsCounterTest < Minitest::Test
     refute_nil ::GemsCounter::VERSION
   end
 
-  def test_fails_when_folder_does_not_exist
-    assert_raises InvalidPathError do
-      Counter.new("invalid_path")
+
+  def test_when_folder_is_empty_returns_empty_list
+    Dir.mktmpdir do |dir|
+      assert Counter.new(dir).count == []
     end
   end
 end
@@ -15,7 +16,10 @@ end
 class InvalidPathError < StandardError; end
 
 class Counter
-  def initialize path
-    raise InvalidPathError
+  def initialize dir
+  end
+
+  def count
+    []
   end
 end
