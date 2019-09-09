@@ -24,40 +24,40 @@ describe GemsCounter do
     end
   end
 
-describe '#fetch_all_gems' do
-  subject(:fetch_gems) { gemfiles.fetch_all_gems }
-  it 'returns the array of gems with their versions' do
-    expect(fetch_gems).to be_an_instance_of(Array)
+  describe '#fetch_all_gems' do
+    subject(:fetch_gems) { gemfiles.fetch_all_gems }
+    it 'returns the array of gems with their versions' do
+      expect(fetch_gems).to be_an_instance_of(Array)
+    end
+
+    it 'checks if all gems have been added' do
+      expect(fetch_gems.size).to eq(83)
+    end
+
   end
 
-  it 'checks if all gems have been added' do
-    expect(fetch_gems.size).to eq(83)
+  describe '#count_all_gems' do
+    it 'returns hash of gems with their occurences' do
+      expect(gemfiles.count_all_gems).to be_an_instance_of(Hash)
+    end
   end
 
-end
-
-describe '#count_all_gems' do
-  it 'returns hash of gems with their occurences' do
-    expect(gemfiles.count_all_gems).to be_an_instance_of(Hash)
+  describe '#rails_gems' do
+    it 'returns array of rails gems with their versions' do
+      expect(gemfiles.rails_gems).to be_an_instance_of(Array)
+    end
   end
-end
 
-describe '#rails_gems' do
-  it 'returns array of rails gems with their versions' do
-    expect(gemfiles.rails_gems).to be_an_instance_of(Array)
+  describe '#count_rails_versions' do
+    it 'returns hash of rails gems versions with their occurences' do
+      expect(gemfiles.count_rails_versions).to be_an_instance_of(Hash)
+    end
   end
-end
 
-describe '#count_rails_versions' do
-  it 'returns hash of rails gems versions with their occurences' do
-    expect(gemfiles.count_rails_versions).to be_an_instance_of(Hash)
+  describe '#count_ruby_versions' do
+    it 'returns hash of ruby versions with their occurences' do
+      expect(gemfiles.count_ruby_versions).to be_an_instance_of(Hash)
+    end
   end
-end
-
-describe '#count_ruby_versions' do
-  it 'returns hash of ruby versions with their occurences' do
-    expect(gemfiles.count_ruby_versions).to be_an_instance_of(Hash)
-  end
-end
 
 end
